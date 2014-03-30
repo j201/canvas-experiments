@@ -1,0 +1,42 @@
+html, body {
+	height: 100%;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	background-color: black;
+}
+
+header {
+	position: fixed;
+	display: block;
+	top: 0;
+	left: 0;
+	right: 0;
+	opacity: 0;
+	transition: opacity 0.5s;
+	height: 100px;
+	line-height: 100px;
+	background-color: hsla(0, 0%, 100%, 0.9);
+	color: #777;
+	padding-left: 10%;
+	overflow: hidden;
+	font-family: sans-serif;
+	font-size: 30px;
+}
+
+header:hover {
+	opacity: 1;
+	transition: opacity 0.5s;
+}
+
+header a {
+	color: hsl(200, 80%, 60%);
+	text-decoration: none;
+}
+
+header a:hover {
+	color: hsl(250, 80%, 70%);
+}
