@@ -28,3 +28,14 @@
             colour))))
 
 (defn ticks->s [x] (/ x 60))
+
+(defn osc
+  "A sinusoidal oscillator from 0 to 1"
+  [start period]
+  (let [start-phase (.asin js/Math (dec (* 2 start)))]
+    (fn [x]
+      (+ 0.5
+         (* 0.5
+            (.sin js/Math (+ start-phase
+                             (* 2 Math/PI
+                                (/ x period)))))))))

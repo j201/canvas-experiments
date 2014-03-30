@@ -7,36 +7,61 @@ html, body {
 
 body {
 	background-color: black;
-}
-
-header {
-	position: fixed;
-	display: block;
-	top: 0;
-	left: 0;
-	right: 0;
-	opacity: 0;
-	transition: opacity 0.5s;
-	height: 100px;
-	line-height: 100px;
-	background-color: hsla(0, 0%, 100%, 0.9);
-	color: #777;
-	padding-left: 10%;
-	overflow: hidden;
 	font-family: sans-serif;
 	font-size: 30px;
 }
 
-header:hover {
+.hover-bar {
+	position: fixed;
+	display: block;
+	opacity: 0;
+	transition: opacity 0.5s;
+	background-color: hsla(0, 0%, 100%, 0.9);
+	color: #777;
+}
+
+.hover-bar:hover {
 	opacity: 1;
 	transition: opacity 0.5s;
 }
 
-header a {
+header {
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 100px;
+	line-height: 100px;
+	padding-left: 10%;
+	overflow: hidden;
+}
+
+#left-arrow, #right-arrow {
+	top: 0;
+	height: 100%;
+	width: 50px;
+	font-size: 1.5em;
+	text-align: center;
+	cursor: pointer;
+}
+
+#left-arrow {
+	left: 0;
+}
+
+#right-arrow {
+	right: 0;
+}
+
+.centerer {
+	position: relative;
+	top: 50%;
+}
+
+a {
 	color: hsl(200, 80%, 60%);
 	text-decoration: none;
 }
 
-header a:hover {
+a:hover {
 	color: hsl(250, 80%, 70%);
 }

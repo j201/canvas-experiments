@@ -44,7 +44,6 @@
                                                                                                    :l max-sat})})
                                                           circles))}))
                           (fn [ctx {circles :circles}]
-                            (.log js/console circles)
                             (doseq [{:keys [r colour]} circles]
                               (-> ctx
                                   (monet/fill-style colour)
