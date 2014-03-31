@@ -7,7 +7,7 @@
 (def circle-distance (+ (* 2 circle-radius) circle-padding))
 (def circle-set-rows 5)
 (def circle-set-total-width (* circle-set-rows circle-distance))
-(def circle-set-speed 3)
+(def circle-set-speed 2)
 (def circle-set-recolour-interval 100)
 (def radius-osc (utils/osc 0.5 100))
 (def radius-variance -10)
