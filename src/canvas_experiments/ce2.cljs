@@ -56,10 +56,10 @@
 
 
 (defn entities [w h]
-  {:cs1 (apply monet/entity (circle-set 0 100 circle-set-speed false w h "xor"))
-   :cs2 (apply monet/entity (circle-set 100 0 circle-set-speed true w h "xor"))
-   :cs3 (apply monet/entity (circle-set 0 (- h 50 circle-set-total-width) (- circle-set-speed) false w h "xor"))
-   :cs4 (apply monet/entity (circle-set (- w 100 circle-set-total-width) 0 (- circle-set-speed) true w h "xor"))})
+  {:cs1 (apply monet/entity (circle-set 0 (- (/ h 2) 200) circle-set-speed false w h "xor"))
+   :cs2 (apply monet/entity (circle-set (- (/ w 2) 200) 0 circle-set-speed true w h "xor"))
+   :cs3 (apply monet/entity (circle-set 0  (- (/ h 2) 100) (- circle-set-speed) false w h "xor"))
+   :cs4 (apply monet/entity (circle-set (- (/ w 2) 100) 0 (- circle-set-speed) true w h "xor"))})
 
 (defn show [mcanvas w h]
   (doseq [[kw e] (entities w h)]

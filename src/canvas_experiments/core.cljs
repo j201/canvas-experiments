@@ -22,6 +22,12 @@
   ((nth experiments (hash-num))
    @mcanvas (.-width canvas) (.-height canvas)))
 
+(defn reset []
+  (when @mcanvas
+    (monet/stop @mcanvas))
+  (resize-canvas)
+  (show-experiment))
+
 (defn next-experiment []
   (set! (.-hash js/location) (mod (inc (hash-num))
                                  (count experiments)))
@@ -30,12 +36,6 @@
   (set! (.-hash js/location) (mod (dec (hash-num))
                                  (count experiments)))
   (reset))
-
-(defn reset []
-  (when @mcanvas
-    (monet/stop @mcanvas))
-  (resize-canvas)
-  (show-experiment))
 
 (js/addEventListener "resize" reset)
 

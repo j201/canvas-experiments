@@ -32,7 +32,10 @@ header {
 	height: 100px;
 	line-height: 100px;
 	padding-left: 10%;
+	padding-right: 10%;
 	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 
 #left-arrow, #right-arrow {

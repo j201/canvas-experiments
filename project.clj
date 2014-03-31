@@ -13,5 +13,5 @@
         :compiler {:output-to "public/cljs.js"
                    ; :output-dir "public"
                    ; :source-map "public/cljs.js.map"
-                   :optimizations :advanced
-                   :pretty-print false}}}})
+                   :optimizations :whitespace
+                   :pretty-print true}}}})
