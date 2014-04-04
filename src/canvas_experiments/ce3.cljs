@@ -10,6 +10,7 @@
 (def line-colour-1 "hsl(50, 100%, 80%)")
 (def line-colour-2 "hsl(230, 100%, 80%)")
 (def line-speed 2)
+(def opacity-loss 0.01)
 
 (defn rand-dir [r]
   (let [theta (* 2 (.-PI js/Math) (rand))]
@@ -21,6 +22,7 @@
   ([point]
    {:from point
     :to point
+    :opacity 1
     :dir (rand-dir line-speed)}))
 
 (defn sqr [x] (* x x))
@@ -37,6 +39,13 @@
     (or (point-on (:from line))
         (point-on (:to line)))))
 
+(defn update-opacity [lines]
+  (map (fn [line]
+         (assoc line :opacity (- (:opacity line)
+                                 opacity-loss)))
+       (filter #(> (:opacity line) opacity-loss)
+               lines)))
+
 (defn brancher [colour w h]
   (monet/entity {:finished-lines []
                  :growing-lines [(new-line [(/ w 2) (/ h 2)])]}
@@ -44,11 +53,11 @@
                   (let [{new-finished-lines true, growing-lines false} (group-by #(>= (line-length %)
                                                                                       max-line-length)
                                                                                  (:growing-lines state))]
-                    {:finished-lines (take max-finished-lines (concat new-finished-lines (:finished-lines state)))
-                     :growing-lines (concat (take max-growing-lines (map #(assoc % :to (map + 
+                    {:finished-lines (take max-finished-lines (update-opacity (concat new-finished-lines (:finished-lines state))))
+                     :growing-lines (concat (take max-growing-lines (update-opacity (map #(assoc % :to (map + 
                                                                                             (:to %)
                                                                                             (:dir %)))
-                                                                         growing-lines))
+                                                                         growing-lines)))
                                             (filter #(on-screen % w h)
                                                     (mapcat (fn [line]
                                                               (take branches
