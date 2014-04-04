@@ -7,8 +7,8 @@
 (def max-growing-lines 100)
 (def max-line-length 100)
 (def branches 2)
-(def line-colour-1 "hsl(50, 100%, 80%)")
-(def line-colour-2 "hsl(230, 100%, 80%)")
+(def line-colour-1 {:h 50 :s 1 :l 0.8})
+(def line-colour-2 {:h 230 :s 1 :l 0.8})
 (def line-speed 2)
 (def opacity-loss 0.01)
 
@@ -40,10 +40,12 @@
         (point-on (:to line)))))
 
 (defn update-opacity [lines]
+  (.log js/console (- (count lines) (count (filter #(> (:opacity %) opacity-loss)
+                                                   lines))))
   (map (fn [line]
          (assoc line :opacity (- (:opacity line)
                                  opacity-loss)))
-       (filter #(> (:opacity line) opacity-loss)
+       (filter #(> (:opacity %) opacity-loss)
                lines)))
 
 (defn brancher [colour w h]
@@ -53,25 +55,26 @@
                   (let [{new-finished-lines true, growing-lines false} (group-by #(>= (line-length %)
                                                                                       max-line-length)
                                                                                  (:growing-lines state))]
-                    {:finished-lines (take max-finished-lines (update-opacity (concat new-finished-lines (:finished-lines state))))
-                     :growing-lines (concat (take max-growing-lines (update-opacity (map #(assoc % :to (map + 
-                                                                                            (:to %)
-                                                                                            (:dir %)))
-                                                                         growing-lines)))
-                                            (filter #(on-screen % w h)
-                                                    (mapcat (fn [line]
-                                                              (take branches
-                                                                    (repeatedly #(new-line (:to line)))))
-                                                            new-finished-lines)))}))
+                    {:finished-lines (update-opacity (concat new-finished-lines (:finished-lines state)))
+                     :growing-lines  (take max-growing-lines
+                                           (concat (map #(assoc % :to (map + 
+                                                                           (:to %)
+                                                                           (:dir %)))
+                                                        growing-lines)
+                                                   (filter #(on-screen % w h)
+                                                           (mapcat (fn [line]
+                                                                     (take branches
+                                                                           (repeatedly #(new-line (:to line)))))
+                                                                   new-finished-lines))))}))
                 (fn [ctx state]
-                  (monet/stroke-style ctx colour)
-                  (monet/begin-path ctx)
-                  (doseq [{:keys [from to]} (concat (:finished-lines state)
-                                                    (:growing-lines state))]
+                  (doseq [{:keys [from to opacity]} (concat (:finished-lines state)
+                                                            (:growing-lines state))]
+                    (monet/stroke-style ctx (utils/to-colour (assoc colour :a opacity)))
+                    (monet/begin-path ctx)
                     (apply monet/move-to ctx from)
-                    (apply monet/line-to ctx to))
-                  (monet/close-path ctx)
-                  (monet/stroke ctx))))
+                    (apply monet/line-to ctx to)
+                    (monet/close-path ctx)
+                    (monet/stroke ctx)))))
 
 (defn entities [w h]
   {:brancher-1 (brancher line-colour-1 w h)
