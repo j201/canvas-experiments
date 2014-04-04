@@ -40,8 +40,6 @@
         (point-on (:to line)))))
 
 (defn update-opacity [lines]
-  (.log js/console (- (count lines) (count (filter #(> (:opacity %) opacity-loss)
-                                                   lines))))
   (map (fn [line]
          (assoc line :opacity (- (:opacity line)
                                  opacity-loss)))
