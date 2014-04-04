@@ -39,3 +39,7 @@
             (.sin js/Math (+ start-phase
                              (* 2 Math/PI
                                 (/ x period)))))))))
+
+(defn log [thing]
+  (.log js/console thing)
+  thing)
