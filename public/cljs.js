@@ -25178,8 +25178,8 @@ goog.require("monet.canvas");
 goog.require("monet.canvas");
 canvas_experiments.core.canvas = document.getElementById("canvas");
 canvas_experiments.core.resize_canvas = function resize_canvas() {
-  canvas_experiments.core.canvas.width = innerWidth;
-  return canvas_experiments.core.canvas.height = innerHeight;
+  canvas_experiments.core.canvas.width = document.body.offsetWidth;
+  return canvas_experiments.core.canvas.height = document.body.offsetHeight;
 };
 canvas_experiments.core.hash_num = function hash_num() {
   return cljs.core.subs.call(null, location.hash, 1) | 0;
@@ -25212,11 +25212,11 @@ canvas_experiments.core.prev_experiment = function prev_experiment() {
 addEventListener("resize", canvas_experiments.core.reset);
 addEventListener("keydown", function(e) {
   var handler = function() {
-    var G__4949 = e.keyCode;
-    if (cljs.core._EQ_.call(null, 37, G__4949)) {
+    var G__5050 = e.keyCode;
+    if (cljs.core._EQ_.call(null, 37, G__5050)) {
       return canvas_experiments.core.prev_experiment;
     } else {
-      if (cljs.core._EQ_.call(null, 39, G__4949)) {
+      if (cljs.core._EQ_.call(null, 39, G__5050)) {
         return canvas_experiments.core.next_experiment;
       } else {
         if (new cljs.core.Keyword(null, "else", "else", 1017020587)) {

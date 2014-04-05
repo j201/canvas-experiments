@@ -9,6 +9,7 @@ body {
 	background-color: black;
 	font-family: sans-serif;
 	font-size: 30px;
+	overflow: hidden;
 }
 
 .hover-bar {

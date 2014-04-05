@@ -6,8 +6,8 @@
 
 (defn resize-canvas []
   (do
-    (set! (.-width canvas) js/innerWidth)
-    (set! (.-height canvas) js/innerHeight)))
+    (set! (.-width canvas) (.-offsetWidth (.-body js/document)))
+    (set! (.-height canvas) (.-offsetHeight (.-body js/document)))))
 
 (defn hash-num []
   (int (subs (.-hash js/location) 1)))
