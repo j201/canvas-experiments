@@ -91,3 +91,9 @@
 (defn normalize-coord "convert to a radius of 1" [coord]
   (let [theta (.atan2 js/Math (second coord) (first coord))]
     (polar-to-cart theta 1)))
+
+(defn point-in [[xp yp] [x1 y1] [x2 y2]]
+  (and (and (>= xp x1)
+            (<= xp x2))
+       (and (>= yp y1)
+            (<= yp y2))))

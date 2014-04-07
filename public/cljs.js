@@ -23254,13 +23254,13 @@ cljs.core.special_symbol_QMARK_ = function special_symbol_QMARK_(x) {
 };
 goog.provide("canvas_experiments.utils");
 goog.require("cljs.core");
-canvas_experiments.utils.to_colour = function to_colour(p__5718) {
-  var map__5720 = p__5718;
-  var map__5720__$1 = cljs.core.seq_QMARK_.call(null, map__5720) ? cljs.core.apply.call(null, cljs.core.hash_map, map__5720) : map__5720;
-  var a = cljs.core.get.call(null, map__5720__$1, new cljs.core.Keyword(null, "a", "a", 1013904339));
-  var l = cljs.core.get.call(null, map__5720__$1, new cljs.core.Keyword(null, "l", "l", 1013904350));
-  var s = cljs.core.get.call(null, map__5720__$1, new cljs.core.Keyword(null, "s", "s", 1013904357));
-  var h = cljs.core.get.call(null, map__5720__$1, new cljs.core.Keyword(null, "h", "h", 1013904346));
+canvas_experiments.utils.to_colour = function to_colour(p__9609) {
+  var map__9611 = p__9609;
+  var map__9611__$1 = cljs.core.seq_QMARK_.call(null, map__9611) ? cljs.core.apply.call(null, cljs.core.hash_map, map__9611) : map__9611;
+  var a = cljs.core.get.call(null, map__9611__$1, new cljs.core.Keyword(null, "a", "a", 1013904339));
+  var l = cljs.core.get.call(null, map__9611__$1, new cljs.core.Keyword(null, "l", "l", 1013904350));
+  var s = cljs.core.get.call(null, map__9611__$1, new cljs.core.Keyword(null, "s", "s", 1013904357));
+  var h = cljs.core.get.call(null, map__9611__$1, new cljs.core.Keyword(null, "h", "h", 1013904346));
   return[cljs.core.str(cljs.core.truth_(a) ? "hsla(" : "hsl("), cljs.core.str(function() {
     var or__3443__auto__ = h;
     if (cljs.core.truth_(or__3443__auto__)) {
@@ -23304,21 +23304,21 @@ canvas_experiments.utils.log = function log(thing) {
   console.log(thing);
   return thing;
 };
-canvas_experiments.utils.line_segment_intersection = function line_segment_intersection(p__5721, p__5722) {
-  var vec__5729 = p__5721;
-  var vec__5730 = cljs.core.nth.call(null, vec__5729, 0, null);
-  var x1 = cljs.core.nth.call(null, vec__5730, 0, null);
-  var y1 = cljs.core.nth.call(null, vec__5730, 1, null);
-  var vec__5731 = cljs.core.nth.call(null, vec__5729, 1, null);
-  var x2 = cljs.core.nth.call(null, vec__5731, 0, null);
-  var y2 = cljs.core.nth.call(null, vec__5731, 1, null);
-  var vec__5732 = p__5722;
-  var vec__5733 = cljs.core.nth.call(null, vec__5732, 0, null);
-  var x3 = cljs.core.nth.call(null, vec__5733, 0, null);
-  var y3 = cljs.core.nth.call(null, vec__5733, 1, null);
-  var vec__5734 = cljs.core.nth.call(null, vec__5732, 1, null);
-  var x4 = cljs.core.nth.call(null, vec__5734, 0, null);
-  var y4 = cljs.core.nth.call(null, vec__5734, 1, null);
+canvas_experiments.utils.line_segment_intersection = function line_segment_intersection(p__9612, p__9613) {
+  var vec__9620 = p__9612;
+  var vec__9621 = cljs.core.nth.call(null, vec__9620, 0, null);
+  var x1 = cljs.core.nth.call(null, vec__9621, 0, null);
+  var y1 = cljs.core.nth.call(null, vec__9621, 1, null);
+  var vec__9622 = cljs.core.nth.call(null, vec__9620, 1, null);
+  var x2 = cljs.core.nth.call(null, vec__9622, 0, null);
+  var y2 = cljs.core.nth.call(null, vec__9622, 1, null);
+  var vec__9623 = p__9613;
+  var vec__9624 = cljs.core.nth.call(null, vec__9623, 0, null);
+  var x3 = cljs.core.nth.call(null, vec__9624, 0, null);
+  var y3 = cljs.core.nth.call(null, vec__9624, 1, null);
+  var vec__9625 = cljs.core.nth.call(null, vec__9623, 1, null);
+  var x4 = cljs.core.nth.call(null, vec__9625, 0, null);
+  var y4 = cljs.core.nth.call(null, vec__9625, 1, null);
   var t = (x4 * (y1 - y3) + x1 * (y3 - y4) + x3 * (y4 - y1)) / (x4 * (y1 - y2) + x3 * (y2 - y1) + (x1 - x2) * (y3 - y4));
   if (cljs.core._EQ_.call(null, t, Infinity) || (t < 0 || t > 1)) {
     return null;
@@ -23345,14 +23345,26 @@ canvas_experiments.utils.transform = function transform(mtx) {
   return cljs.core.apply.call(null, cljs.core.map, cljs.core.list, mtx);
 };
 canvas_experiments.utils.polygon_area = function polygon_area(polygon) {
-  var vec__5736 = canvas_experiments.utils.transform.call(null, polygon);
-  var xs = cljs.core.nth.call(null, vec__5736, 0, null);
-  var ys = cljs.core.nth.call(null, vec__5736, 1, null);
+  var vec__9627 = canvas_experiments.utils.transform.call(null, polygon);
+  var xs = cljs.core.nth.call(null, vec__9627, 0, null);
+  var ys = cljs.core.nth.call(null, vec__9627, 1, null);
   return 0.5 * Math.abs(cljs.core.reduce.call(null, cljs.core._PLUS_, cljs.core.map.call(null, cljs.core._STAR_, cljs.core.drop_last.call(null, 1, xs), cljs.core.drop.call(null, 1, ys))) + cljs.core.last.call(null, xs) * cljs.core.first.call(null, ys) + -cljs.core.reduce.call(null, cljs.core._PLUS_, cljs.core.map.call(null, cljs.core._STAR_, cljs.core.drop_last.call(null, 1, ys), cljs.core.drop.call(null, 1, xs))) + -(cljs.core.last.call(null, ys) * cljs.core.first.call(null, xs)));
 };
 canvas_experiments.utils.normalize_coord = function normalize_coord(coord) {
   var theta = Math.atan2(cljs.core.second.call(null, coord), cljs.core.first.call(null, coord));
   return canvas_experiments.utils.polar_to_cart.call(null, theta, 1);
+};
+canvas_experiments.utils.point_in = function point_in(p__9628, p__9629, p__9630) {
+  var vec__9634 = p__9628;
+  var xp = cljs.core.nth.call(null, vec__9634, 0, null);
+  var yp = cljs.core.nth.call(null, vec__9634, 1, null);
+  var vec__9635 = p__9629;
+  var x1 = cljs.core.nth.call(null, vec__9635, 0, null);
+  var y1 = cljs.core.nth.call(null, vec__9635, 1, null);
+  var vec__9636 = p__9630;
+  var x2 = cljs.core.nth.call(null, vec__9636, 0, null);
+  var y2 = cljs.core.nth.call(null, vec__9636, 1, null);
+  return xp >= x1 && xp <= x2 && (yp >= y1 && yp <= y2);
 };
 goog.provide("monet.core");
 goog.require("cljs.core");
@@ -24915,187 +24927,439 @@ canvas_experiments.ce4.show = function show(mcanvas, w, h) {
     break;
   }
 };
-goog.provide("canvas_experiments.template");
+goog.provide("canvas_experiments.ce5");
 goog.require("cljs.core");
 goog.require("canvas_experiments.utils");
 goog.require("canvas_experiments.utils");
 goog.require("monet.canvas");
 goog.require("monet.canvas");
-canvas_experiments.template.along_line_segment = function along_line_segment(t, p__6303) {
-  var vec__6307 = p__6303;
-  var vec__6308 = cljs.core.nth.call(null, vec__6307, 0, null);
-  var x1 = cljs.core.nth.call(null, vec__6308, 0, null);
-  var y1 = cljs.core.nth.call(null, vec__6308, 1, null);
-  var vec__6309 = cljs.core.nth.call(null, vec__6307, 1, null);
-  var x2 = cljs.core.nth.call(null, vec__6309, 0, null);
-  var y2 = cljs.core.nth.call(null, vec__6309, 1, null);
-  return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [x1 + t * (x2 - x1), y1 + t * (y2 - y1)], null);
+canvas_experiments.ce5.body_length = 120;
+canvas_experiments.ce5.body_width = 20;
+canvas_experiments.ce5.row_length = 50;
+canvas_experiments.ce5.rows_per_side = 16;
+canvas_experiments.ce5.row_separation = canvas_experiments.ce5.body_length / canvas_experiments.ce5.rows_per_side;
+canvas_experiments.ce5.draw_rower_body = function draw_rower_body(ctx, pos, dir, style) {
+  monet.canvas.begin_path.call(null, monet.canvas.stroke_cap.call(null, monet.canvas.stroke_width.call(null, monet.canvas.stroke_style.call(null, ctx, style), canvas_experiments.ce5.body_width), "round"));
+  cljs.core.apply.call(null, monet.canvas.move_to, ctx, pos);
+  cljs.core.apply.call(null, monet.canvas.line_to, ctx, cljs.core.map.call(null, cljs.core._PLUS_, pos, cljs.core.map.call(null, function(p1__10111_SHARP_) {
+    return canvas_experiments.ce5.body_length * p1__10111_SHARP_;
+  }, dir)));
+  return monet.canvas.stroke.call(null, ctx);
 };
-canvas_experiments.template.rand_divide = function rand_divide(shape) {
-  var sides = cljs.core.sort.call(null, canvas_experiments.utils.distinct_rands.call(null, 2, cljs.core.range.call(null, cljs.core.count.call(null, shape))));
-  var sides_line = function() {
-    var iter__4160__auto__ = function(sides) {
-      return function iter__6317(s__6318) {
-        return new cljs.core.LazySeq(null, function(sides) {
-          return function() {
-            var s__6318__$1 = s__6318;
-            while (true) {
-              var temp__4092__auto__ = cljs.core.seq.call(null, s__6318__$1);
-              if (temp__4092__auto__) {
-                var s__6318__$2 = temp__4092__auto__;
-                if (cljs.core.chunked_seq_QMARK_.call(null, s__6318__$2)) {
-                  var c__4158__auto__ = cljs.core.chunk_first.call(null, s__6318__$2);
-                  var size__4159__auto__ = cljs.core.count.call(null, c__4158__auto__);
-                  var b__6320 = cljs.core.chunk_buffer.call(null, size__4159__auto__);
-                  if (function() {
-                    var i__6319 = 0;
-                    while (true) {
-                      if (i__6319 < size__4159__auto__) {
-                        var side = cljs.core._nth.call(null, c__4158__auto__, i__6319);
-                        cljs.core.chunk_append.call(null, b__6320, canvas_experiments.template.along_line_segment.call(null, cljs.core.rand.call(null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.nth.call(null, shape, side), cljs.core.nth.call(null, shape, cljs.core.mod.call(null, side + 1, cljs.core.count.call(null, shape)))], null)));
-                        var G__6321 = i__6319 + 1;
-                        i__6319 = G__6321;
-                        continue;
-                      } else {
-                        return true;
-                      }
-                      break;
-                    }
-                  }()) {
-                    return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__6320), iter__6317.call(null, cljs.core.chunk_rest.call(null, s__6318__$2)));
-                  } else {
-                    return cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, b__6320), null);
-                  }
+canvas_experiments.ce5.draw_rows = function draw_rows(ctx, pos, theta, offset_angle, style) {
+  var dir = canvas_experiments.utils.polar_to_cart.call(null, theta, 1);
+  monet.canvas.stroke_width.call(null, monet.canvas.stroke_style.call(null, ctx, style), 1);
+  var seq__10132 = cljs.core.seq.call(null, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "right", "right", 1122416014), new cljs.core.Keyword(null, "left", "left", 1017222009)], null));
+  var chunk__10133 = null;
+  var count__10134 = 0;
+  var i__10135 = 0;
+  while (true) {
+    if (i__10135 < count__10134) {
+      var side = cljs.core._nth.call(null, chunk__10133, i__10135);
+      var perpendicular_10150 = function() {
+        var G__10136 = side;
+        if (cljs.core._EQ_.call(null, new cljs.core.Keyword(null, "left", "left", 1017222009), G__10136)) {
+          return cljs.core._PLUS_;
+        } else {
+          if (cljs.core._EQ_.call(null, new cljs.core.Keyword(null, "right", "right", 1122416014), G__10136)) {
+            return cljs.core._;
+          } else {
+            if (new cljs.core.Keyword(null, "else", "else", 1017020587)) {
+              throw new Error([cljs.core.str("No matching clause: "), cljs.core.str(side)].join(""));
+            } else {
+              return null;
+            }
+          }
+        }
+      }().call(null, Math.PI / 2);
+      var origin_10151 = cljs.core.map.call(null, cljs.core._PLUS_, pos, cljs.core.map.call(null, function(seq__10132, chunk__10133, count__10134, i__10135, perpendicular_10150, side) {
+        return function(p1__10112_SHARP_) {
+          return p1__10112_SHARP_ * (canvas_experiments.ce5.body_width / 2);
+        };
+      }(seq__10132, chunk__10133, count__10134, i__10135, perpendicular_10150, side), canvas_experiments.utils.polar_to_cart.call(null, theta + perpendicular_10150, 1)));
+      var seq__10137_10152 = cljs.core.seq.call(null, cljs.core.range.call(null, canvas_experiments.ce5.rows_per_side + 1));
+      var chunk__10138_10153 = null;
+      var count__10139_10154 = 0;
+      var i__10140_10155 = 0;
+      while (true) {
+        if (i__10140_10155 < count__10139_10154) {
+          var row_index_10156 = cljs.core._nth.call(null, chunk__10138_10153, i__10140_10155);
+          var line_start_10157 = cljs.core.map.call(null, cljs.core._PLUS_, origin_10151, cljs.core.map.call(null, function(seq__10137_10152, chunk__10138_10153, count__10139_10154, i__10140_10155, seq__10132, chunk__10133, count__10134, i__10135, row_index_10156, perpendicular_10150, origin_10151, side) {
+            return function(p1__10113_SHARP_) {
+              return p1__10113_SHARP_ * (row_index_10156 * canvas_experiments.ce5.row_separation);
+            };
+          }(seq__10137_10152, chunk__10138_10153, count__10139_10154, i__10140_10155, seq__10132, chunk__10133, count__10134, i__10135, row_index_10156, perpendicular_10150, origin_10151, side), dir));
+          monet.canvas.begin_path.call(null, ctx);
+          cljs.core.apply.call(null, monet.canvas.move_to, ctx, line_start_10157);
+          cljs.core.apply.call(null, monet.canvas.line_to, ctx, cljs.core.map.call(null, cljs.core._PLUS_, line_start_10157, canvas_experiments.utils.polar_to_cart.call(null, perpendicular_10150 + function() {
+            var G__10141 = side;
+            if (cljs.core._EQ_.call(null, new cljs.core.Keyword(null, "left", "left", 1017222009), G__10141)) {
+              return cljs.core._;
+            } else {
+              if (cljs.core._EQ_.call(null, new cljs.core.Keyword(null, "right", "right", 1122416014), G__10141)) {
+                return cljs.core._PLUS_;
+              } else {
+                if (new cljs.core.Keyword(null, "else", "else", 1017020587)) {
+                  throw new Error([cljs.core.str("No matching clause: "), cljs.core.str(side)].join(""));
                 } else {
-                  var side = cljs.core.first.call(null, s__6318__$2);
-                  return cljs.core.cons.call(null, canvas_experiments.template.along_line_segment.call(null, cljs.core.rand.call(null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.nth.call(null, shape, side), cljs.core.nth.call(null, shape, cljs.core.mod.call(null, side + 1, cljs.core.count.call(null, shape)))], null)), iter__6317.call(null, cljs.core.rest.call(null, s__6318__$2)));
+                  return null;
+                }
+              }
+            }
+          }().call(null, offset_angle), canvas_experiments.ce5.row_length)));
+          monet.canvas.close_path.call(null, ctx);
+          monet.canvas.stroke.call(null, ctx);
+          var G__10158 = seq__10137_10152;
+          var G__10159 = chunk__10138_10153;
+          var G__10160 = count__10139_10154;
+          var G__10161 = i__10140_10155 + 1;
+          seq__10137_10152 = G__10158;
+          chunk__10138_10153 = G__10159;
+          count__10139_10154 = G__10160;
+          i__10140_10155 = G__10161;
+          continue;
+        } else {
+          var temp__4092__auto___10162 = cljs.core.seq.call(null, seq__10137_10152);
+          if (temp__4092__auto___10162) {
+            var seq__10137_10163__$1 = temp__4092__auto___10162;
+            if (cljs.core.chunked_seq_QMARK_.call(null, seq__10137_10163__$1)) {
+              var c__4191__auto___10164 = cljs.core.chunk_first.call(null, seq__10137_10163__$1);
+              var G__10165 = cljs.core.chunk_rest.call(null, seq__10137_10163__$1);
+              var G__10166 = c__4191__auto___10164;
+              var G__10167 = cljs.core.count.call(null, c__4191__auto___10164);
+              var G__10168 = 0;
+              seq__10137_10152 = G__10165;
+              chunk__10138_10153 = G__10166;
+              count__10139_10154 = G__10167;
+              i__10140_10155 = G__10168;
+              continue;
+            } else {
+              var row_index_10169 = cljs.core.first.call(null, seq__10137_10163__$1);
+              var line_start_10170 = cljs.core.map.call(null, cljs.core._PLUS_, origin_10151, cljs.core.map.call(null, function(seq__10137_10152, chunk__10138_10153, count__10139_10154, i__10140_10155, seq__10132, chunk__10133, count__10134, i__10135, row_index_10169, seq__10137_10163__$1, temp__4092__auto___10162, perpendicular_10150, origin_10151, side) {
+                return function(p1__10113_SHARP_) {
+                  return p1__10113_SHARP_ * (row_index_10169 * canvas_experiments.ce5.row_separation);
+                };
+              }(seq__10137_10152, chunk__10138_10153, count__10139_10154, i__10140_10155, seq__10132, chunk__10133, count__10134, i__10135, row_index_10169, seq__10137_10163__$1, temp__4092__auto___10162, perpendicular_10150, origin_10151, side), dir));
+              monet.canvas.begin_path.call(null, ctx);
+              cljs.core.apply.call(null, monet.canvas.move_to, ctx, line_start_10170);
+              cljs.core.apply.call(null, monet.canvas.line_to, ctx, cljs.core.map.call(null, cljs.core._PLUS_, line_start_10170, canvas_experiments.utils.polar_to_cart.call(null, perpendicular_10150 + function() {
+                var G__10142 = side;
+                if (cljs.core._EQ_.call(null, new cljs.core.Keyword(null, "left", "left", 1017222009), G__10142)) {
+                  return cljs.core._;
+                } else {
+                  if (cljs.core._EQ_.call(null, new cljs.core.Keyword(null, "right", "right", 1122416014), G__10142)) {
+                    return cljs.core._PLUS_;
+                  } else {
+                    if (new cljs.core.Keyword(null, "else", "else", 1017020587)) {
+                      throw new Error([cljs.core.str("No matching clause: "), cljs.core.str(side)].join(""));
+                    } else {
+                      return null;
+                    }
+                  }
+                }
+              }().call(null, offset_angle), canvas_experiments.ce5.row_length)));
+              monet.canvas.close_path.call(null, ctx);
+              monet.canvas.stroke.call(null, ctx);
+              var G__10171 = cljs.core.next.call(null, seq__10137_10163__$1);
+              var G__10172 = null;
+              var G__10173 = 0;
+              var G__10174 = 0;
+              seq__10137_10152 = G__10171;
+              chunk__10138_10153 = G__10172;
+              count__10139_10154 = G__10173;
+              i__10140_10155 = G__10174;
+              continue;
+            }
+          } else {
+          }
+        }
+        break;
+      }
+      var G__10175 = seq__10132;
+      var G__10176 = chunk__10133;
+      var G__10177 = count__10134;
+      var G__10178 = i__10135 + 1;
+      seq__10132 = G__10175;
+      chunk__10133 = G__10176;
+      count__10134 = G__10177;
+      i__10135 = G__10178;
+      continue;
+    } else {
+      var temp__4092__auto__ = cljs.core.seq.call(null, seq__10132);
+      if (temp__4092__auto__) {
+        var seq__10132__$1 = temp__4092__auto__;
+        if (cljs.core.chunked_seq_QMARK_.call(null, seq__10132__$1)) {
+          var c__4191__auto__ = cljs.core.chunk_first.call(null, seq__10132__$1);
+          var G__10179 = cljs.core.chunk_rest.call(null, seq__10132__$1);
+          var G__10180 = c__4191__auto__;
+          var G__10181 = cljs.core.count.call(null, c__4191__auto__);
+          var G__10182 = 0;
+          seq__10132 = G__10179;
+          chunk__10133 = G__10180;
+          count__10134 = G__10181;
+          i__10135 = G__10182;
+          continue;
+        } else {
+          var side = cljs.core.first.call(null, seq__10132__$1);
+          var perpendicular_10183 = function() {
+            var G__10143 = side;
+            if (cljs.core._EQ_.call(null, new cljs.core.Keyword(null, "left", "left", 1017222009), G__10143)) {
+              return cljs.core._PLUS_;
+            } else {
+              if (cljs.core._EQ_.call(null, new cljs.core.Keyword(null, "right", "right", 1122416014), G__10143)) {
+                return cljs.core._;
+              } else {
+                if (new cljs.core.Keyword(null, "else", "else", 1017020587)) {
+                  throw new Error([cljs.core.str("No matching clause: "), cljs.core.str(side)].join(""));
+                } else {
+                  return null;
+                }
+              }
+            }
+          }().call(null, Math.PI / 2);
+          var origin_10184 = cljs.core.map.call(null, cljs.core._PLUS_, pos, cljs.core.map.call(null, function(seq__10132, chunk__10133, count__10134, i__10135, perpendicular_10183, side, seq__10132__$1, temp__4092__auto__) {
+            return function(p1__10112_SHARP_) {
+              return p1__10112_SHARP_ * (canvas_experiments.ce5.body_width / 2);
+            };
+          }(seq__10132, chunk__10133, count__10134, i__10135, perpendicular_10183, side, seq__10132__$1, temp__4092__auto__), canvas_experiments.utils.polar_to_cart.call(null, theta + perpendicular_10183, 1)));
+          var seq__10144_10185 = cljs.core.seq.call(null, cljs.core.range.call(null, canvas_experiments.ce5.rows_per_side + 1));
+          var chunk__10145_10186 = null;
+          var count__10146_10187 = 0;
+          var i__10147_10188 = 0;
+          while (true) {
+            if (i__10147_10188 < count__10146_10187) {
+              var row_index_10189 = cljs.core._nth.call(null, chunk__10145_10186, i__10147_10188);
+              var line_start_10190 = cljs.core.map.call(null, cljs.core._PLUS_, origin_10184, cljs.core.map.call(null, function(seq__10144_10185, chunk__10145_10186, count__10146_10187, i__10147_10188, seq__10132, chunk__10133, count__10134, i__10135, row_index_10189, perpendicular_10183, origin_10184, side, seq__10132__$1, temp__4092__auto__) {
+                return function(p1__10113_SHARP_) {
+                  return p1__10113_SHARP_ * (row_index_10189 * canvas_experiments.ce5.row_separation);
+                };
+              }(seq__10144_10185, chunk__10145_10186, count__10146_10187, i__10147_10188, seq__10132, chunk__10133, count__10134, i__10135, row_index_10189, perpendicular_10183, origin_10184, side, seq__10132__$1, temp__4092__auto__), dir));
+              monet.canvas.begin_path.call(null, ctx);
+              cljs.core.apply.call(null, monet.canvas.move_to, ctx, line_start_10190);
+              cljs.core.apply.call(null, monet.canvas.line_to, ctx, cljs.core.map.call(null, cljs.core._PLUS_, line_start_10190, canvas_experiments.utils.polar_to_cart.call(null, perpendicular_10183 + function() {
+                var G__10148 = side;
+                if (cljs.core._EQ_.call(null, new cljs.core.Keyword(null, "left", "left", 1017222009), G__10148)) {
+                  return cljs.core._;
+                } else {
+                  if (cljs.core._EQ_.call(null, new cljs.core.Keyword(null, "right", "right", 1122416014), G__10148)) {
+                    return cljs.core._PLUS_;
+                  } else {
+                    if (new cljs.core.Keyword(null, "else", "else", 1017020587)) {
+                      throw new Error([cljs.core.str("No matching clause: "), cljs.core.str(side)].join(""));
+                    } else {
+                      return null;
+                    }
+                  }
+                }
+              }().call(null, offset_angle), canvas_experiments.ce5.row_length)));
+              monet.canvas.close_path.call(null, ctx);
+              monet.canvas.stroke.call(null, ctx);
+              var G__10191 = seq__10144_10185;
+              var G__10192 = chunk__10145_10186;
+              var G__10193 = count__10146_10187;
+              var G__10194 = i__10147_10188 + 1;
+              seq__10144_10185 = G__10191;
+              chunk__10145_10186 = G__10192;
+              count__10146_10187 = G__10193;
+              i__10147_10188 = G__10194;
+              continue;
+            } else {
+              var temp__4092__auto___10195__$1 = cljs.core.seq.call(null, seq__10144_10185);
+              if (temp__4092__auto___10195__$1) {
+                var seq__10144_10196__$1 = temp__4092__auto___10195__$1;
+                if (cljs.core.chunked_seq_QMARK_.call(null, seq__10144_10196__$1)) {
+                  var c__4191__auto___10197 = cljs.core.chunk_first.call(null, seq__10144_10196__$1);
+                  var G__10198 = cljs.core.chunk_rest.call(null, seq__10144_10196__$1);
+                  var G__10199 = c__4191__auto___10197;
+                  var G__10200 = cljs.core.count.call(null, c__4191__auto___10197);
+                  var G__10201 = 0;
+                  seq__10144_10185 = G__10198;
+                  chunk__10145_10186 = G__10199;
+                  count__10146_10187 = G__10200;
+                  i__10147_10188 = G__10201;
+                  continue;
+                } else {
+                  var row_index_10202 = cljs.core.first.call(null, seq__10144_10196__$1);
+                  var line_start_10203 = cljs.core.map.call(null, cljs.core._PLUS_, origin_10184, cljs.core.map.call(null, function(seq__10144_10185, chunk__10145_10186, count__10146_10187, i__10147_10188, seq__10132, chunk__10133, count__10134, i__10135, row_index_10202, seq__10144_10196__$1, temp__4092__auto___10195__$1, perpendicular_10183, origin_10184, side, seq__10132__$1, temp__4092__auto__) {
+                    return function(p1__10113_SHARP_) {
+                      return p1__10113_SHARP_ * (row_index_10202 * canvas_experiments.ce5.row_separation);
+                    };
+                  }(seq__10144_10185, chunk__10145_10186, count__10146_10187, i__10147_10188, seq__10132, chunk__10133, count__10134, i__10135, row_index_10202, seq__10144_10196__$1, temp__4092__auto___10195__$1, perpendicular_10183, origin_10184, side, seq__10132__$1, temp__4092__auto__), dir));
+                  monet.canvas.begin_path.call(null, ctx);
+                  cljs.core.apply.call(null, monet.canvas.move_to, ctx, line_start_10203);
+                  cljs.core.apply.call(null, monet.canvas.line_to, ctx, cljs.core.map.call(null, cljs.core._PLUS_, line_start_10203, canvas_experiments.utils.polar_to_cart.call(null, perpendicular_10183 + function() {
+                    var G__10149 = side;
+                    if (cljs.core._EQ_.call(null, new cljs.core.Keyword(null, "left", "left", 1017222009), G__10149)) {
+                      return cljs.core._;
+                    } else {
+                      if (cljs.core._EQ_.call(null, new cljs.core.Keyword(null, "right", "right", 1122416014), G__10149)) {
+                        return cljs.core._PLUS_;
+                      } else {
+                        if (new cljs.core.Keyword(null, "else", "else", 1017020587)) {
+                          throw new Error([cljs.core.str("No matching clause: "), cljs.core.str(side)].join(""));
+                        } else {
+                          return null;
+                        }
+                      }
+                    }
+                  }().call(null, offset_angle), canvas_experiments.ce5.row_length)));
+                  monet.canvas.close_path.call(null, ctx);
+                  monet.canvas.stroke.call(null, ctx);
+                  var G__10204 = cljs.core.next.call(null, seq__10144_10196__$1);
+                  var G__10205 = null;
+                  var G__10206 = 0;
+                  var G__10207 = 0;
+                  seq__10144_10185 = G__10204;
+                  chunk__10145_10186 = G__10205;
+                  count__10146_10187 = G__10206;
+                  i__10147_10188 = G__10207;
+                  continue;
                 }
               } else {
-                return null;
               }
-              break;
             }
-          };
-        }(sides), null, null);
-      };
-    }(sides);
-    return iter__4160__auto__.call(null, sides);
-  }();
-  return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.concat.call(null, cljs.core.reverse.call(null, sides_line), cljs.core.map.call(null, function(p1__6310_SHARP_) {
-    return cljs.core.nth.call(null, shape, p1__6310_SHARP_);
-  }, cljs.core.apply.call(null, cljs.core.range, cljs.core.map.call(null, cljs.core.inc, sides)))), cljs.core.concat.call(null, sides_line, cljs.core.map.call(null, function(p1__6311_SHARP_) {
-    return cljs.core.nth.call(null, shape, p1__6311_SHARP_);
-  }, cljs.core.map.call(null, function(p1__6312_SHARP_) {
-    return cljs.core.mod.call(null, p1__6312_SHARP_, cljs.core.count.call(null, shape));
-  }, cljs.core.range.call(null, cljs.core.second.call(null, sides) + 1, 1 + cljs.core.count.call(null, shape) + cljs.core.first.call(null, sides)))))], null);
-};
-canvas_experiments.template.min_fragment_size = 30;
-canvas_experiments.template.colour = "hsl(240, 60% 70%)";
-canvas_experiments.template.fragment_speed = 1;
-canvas_experiments.template.move_fragment = function move_fragment(fragment, w, h) {
-  var dir = cljs.core.map.call(null, function(p1__6322_SHARP_) {
-    return canvas_experiments.template.fragment_speed * p1__6322_SHARP_;
-  }, canvas_experiments.utils.normalize_coord.call(null, cljs.core.map.call(null, cljs.core._, cljs.core.first.call(null, fragment), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [w / 2, h / 2], null))));
-  return cljs.core.map.call(null, function(p1__6323_SHARP_) {
-    return cljs.core.map.call(null, cljs.core._PLUS_, dir, p1__6323_SHARP_);
-  }, fragment);
-};
-canvas_experiments.template.entities = function entities(w, h) {
-  return new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "rect", "rect", 1017400662), monet.canvas.entity.call(null, new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null, "fragments", "fragments", 1395153813), new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [w * 0.25, h * 0.25], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, 
-  [w * 0.75, h * 0.25], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [w * 0.75, h * 0.75], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [w * 0.25, h * 0.75], null)], null), new cljs.core.Keyword(null, "states", "states", 4416389492), cljs.core.List.EMPTY, new cljs.core.Keyword(null, "rewinding", "rewinding", 2402197689), false], null), function(p__6335) {
-    var map__6336 = p__6335;
-    var map__6336__$1 = cljs.core.seq_QMARK_.call(null, map__6336) ? cljs.core.apply.call(null, cljs.core.hash_map, map__6336) : map__6336;
-    var state = map__6336__$1;
-    var rewinding = cljs.core.get.call(null, map__6336__$1, new cljs.core.Keyword(null, "rewinding", "rewinding", 2402197689));
-    var states = cljs.core.get.call(null, map__6336__$1, new cljs.core.Keyword(null, "states", "states", 4416389492));
-    var fragments = cljs.core.get.call(null, map__6336__$1, new cljs.core.Keyword(null, "fragments", "fragments", 1395153813));
-    console.log(cljs.core.count.call(null, fragments));
-    if (cljs.core.truth_(function() {
-      var and__3431__auto__ = rewinding;
-      if (cljs.core.truth_(and__3431__auto__)) {
-        return cljs.core.seq.call(null, states);
+            break;
+          }
+          var G__10208 = cljs.core.next.call(null, seq__10132__$1);
+          var G__10209 = null;
+          var G__10210 = 0;
+          var G__10211 = 0;
+          seq__10132 = G__10208;
+          chunk__10133 = G__10209;
+          count__10134 = G__10210;
+          i__10135 = G__10211;
+          continue;
+        }
       } else {
-        return and__3431__auto__;
+        return null;
       }
-    }())) {
-      var rest_states = cljs.core.rest.call(null, states);
-      if (cljs.core.seq.call(null, rest_states) && cljs.core.not.call(null, (new cljs.core.Keyword(null, "rewinding", "rewinding", 2402197689)).cljs$core$IFn$_invoke$arity$1(cljs.core.first.call(null, rest_states.call(null))))) {
-        return cljs.core.map.call(null, function(p1__6324_SHARP_) {
-          return cljs.core.assoc.call(null, p1__6324_SHARP_, new cljs.core.Keyword(null, "rewinding", "rewinding", 2402197689), true);
-        }, rest_states);
-      } else {
-        return rest_states;
-      }
-    } else {
-      var map__6337 = cljs.core.group_by.call(null, function(p1__6325_SHARP_) {
-        return canvas_experiments.utils.polygon_size.call(null, p1__6325_SHARP_) < canvas_experiments.template.min_fragment_size;
-      }, fragments);
-      var map__6337__$1 = cljs.core.seq_QMARK_.call(null, map__6337) ? cljs.core.apply.call(null, cljs.core.hash_map, map__6337) : map__6337;
-      var finished = cljs.core.get.call(null, map__6337__$1, true);
-      var to_split = cljs.core.get.call(null, map__6337__$1, false);
-      return new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null, "fragments", "fragments", 1395153813), cljs.core.map.call(null, canvas_experiments.template.move_fragment, cljs.core.concat.call(null, finished, cljs.core.map.call(null, canvas_experiments.template.rand_divide, to_split))), new cljs.core.Keyword(null, "states", "states", 4416389492), cljs.core.cons.call(null, state, states), new cljs.core.Keyword(null, "rewinding", "rewinding", 2402197689), cljs.core.count.call(null, 
-      to_split) === 0], null);
     }
-  }, function(ctx, p__6338) {
-    var map__6339 = p__6338;
-    var map__6339__$1 = cljs.core.seq_QMARK_.call(null, map__6339) ? cljs.core.apply.call(null, cljs.core.hash_map, map__6339) : map__6339;
-    var fragments = cljs.core.get.call(null, map__6339__$1, new cljs.core.Keyword(null, "fragments", "fragments", 1395153813));
-    monet.canvas.fill_color.call(null, ctx, canvas_experiments.template.colour);
-    var seq__6340 = cljs.core.seq.call(null, fragments);
-    var chunk__6341 = null;
-    var count__6342 = 0;
-    var i__6343 = 0;
+    break;
+  }
+};
+canvas_experiments.ce5.max_speed = 4;
+canvas_experiments.ce5.max_row_angle = Math.PI / 4;
+canvas_experiments.ce5.osc_divisor = 20;
+canvas_experiments.ce5.speed_osc = function speed_osc(ticks) {
+  return canvas_experiments.ce5.max_speed * function() {
+    var x__3750__auto__ = 0;
+    var y__3751__auto__ = Math.sin(ticks / canvas_experiments.ce5.osc_divisor);
+    return x__3750__auto__ > y__3751__auto__ ? x__3750__auto__ : y__3751__auto__;
+  }();
+};
+canvas_experiments.ce5.row_osc = function row_osc(ticks) {
+  return canvas_experiments.ce5.max_row_angle * Math.cos(ticks / canvas_experiments.ce5.osc_divisor);
+};
+canvas_experiments.ce5.rower = function rower(pos, theta, style, w, h) {
+  var dir = canvas_experiments.utils.polar_to_cart.call(null, theta, 1);
+  return new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null, "state", "state", 1123661827), new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "ticks", "ticks", 1124259304), 0, new cljs.core.Keyword(null, "pos", "pos", 1014015430), pos], null), new cljs.core.Keyword(null, "update", "update", 4470025275), function(p__10217) {
+    var map__10218 = p__10217;
+    var map__10218__$1 = cljs.core.seq_QMARK_.call(null, map__10218) ? cljs.core.apply.call(null, cljs.core.hash_map, map__10218) : map__10218;
+    var pos__$1 = cljs.core.get.call(null, map__10218__$1, new cljs.core.Keyword(null, "pos", "pos", 1014015430));
+    var ticks = cljs.core.get.call(null, map__10218__$1, new cljs.core.Keyword(null, "ticks", "ticks", 1124259304));
+    var next_pos = cljs.core.map.call(null, cljs.core._PLUS_, pos__$1, cljs.core.map.call(null, function(p1__10212_SHARP_) {
+      return p1__10212_SHARP_ * canvas_experiments.ce5.speed_osc.call(null, ticks);
+    }, dir));
+    if (canvas_experiments.utils.point_in.call(null, next_pos, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [0, 0], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [w, h], null))) {
+      return new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "ticks", "ticks", 1124259304), ticks + 1, new cljs.core.Keyword(null, "pos", "pos", 1014015430), next_pos], null);
+    } else {
+      return null;
+    }
+  }, new cljs.core.Keyword(null, "draw", "draw", 1016996022), function(ctx, p__10219) {
+    var map__10220 = p__10219;
+    var map__10220__$1 = cljs.core.seq_QMARK_.call(null, map__10220) ? cljs.core.apply.call(null, cljs.core.hash_map, map__10220) : map__10220;
+    var ticks = cljs.core.get.call(null, map__10220__$1, new cljs.core.Keyword(null, "ticks", "ticks", 1124259304));
+    var pos__$1 = cljs.core.get.call(null, map__10220__$1, new cljs.core.Keyword(null, "pos", "pos", 1014015430));
+    canvas_experiments.ce5.draw_rower_body.call(null, ctx, pos__$1, dir, style);
+    return canvas_experiments.ce5.draw_rows.call(null, ctx, pos__$1, theta, canvas_experiments.ce5.row_osc.call(null, ticks), style);
+  }], null);
+};
+canvas_experiments.ce5.rand_side_point = function rand_side_point(w, h) {
+  var side = cljs.core.rand_int.call(null, 3);
+  var G__10222 = side;
+  if (cljs.core._EQ_.call(null, 3, G__10222)) {
+    return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.rand.call(null, w), h], null);
+  } else {
+    if (cljs.core._EQ_.call(null, 2, G__10222)) {
+      return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [w, cljs.core.rand.call(null, h)], null);
+    } else {
+      if (cljs.core._EQ_.call(null, 1, G__10222)) {
+        return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.rand.call(null, w), 0], null);
+      } else {
+        if (cljs.core._EQ_.call(null, 0, G__10222)) {
+          return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [0, cljs.core.rand.call(null, h)], null);
+        } else {
+          if (new cljs.core.Keyword(null, "else", "else", 1017020587)) {
+            throw new Error([cljs.core.str("No matching clause: "), cljs.core.str(side)].join(""));
+          } else {
+            return null;
+          }
+        }
+      }
+    }
+  }
+};
+canvas_experiments.ce5.no_of_rowers = 5;
+canvas_experiments.ce5.rower_colour = new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "s", "s", 1013904357), 0.5, new cljs.core.Keyword(null, "l", "l", 1013904350), 0.7], null);
+canvas_experiments.ce5.new_rower = function new_rower(w, h) {
+  return canvas_experiments.ce5.rower.call(null, canvas_experiments.ce5.rand_side_point.call(null, w, h), cljs.core.rand.call(null) * 2 * Math.PI, canvas_experiments.utils.rand_colour.call(null, canvas_experiments.ce5.rower_colour), w, h);
+};
+canvas_experiments.ce5.rowers = function rowers(w, h) {
+  return monet.canvas.entity.call(null, cljs.core.take.call(null, canvas_experiments.ce5.no_of_rowers, cljs.core.repeatedly.call(null, function() {
+    return canvas_experiments.ce5.new_rower.call(null, w, h);
+  })), function(rowers__$1) {
+    var updated = cljs.core.filter.call(null, function(p1__10223_SHARP_) {
+      return!((new cljs.core.Keyword(null, "state", "state", 1123661827)).cljs$core$IFn$_invoke$arity$1(p1__10223_SHARP_) == null);
+    }, cljs.core.map.call(null, function(p1__10224_SHARP_) {
+      return cljs.core.assoc.call(null, p1__10224_SHARP_, new cljs.core.Keyword(null, "state", "state", 1123661827), (new cljs.core.Keyword(null, "update", "update", 4470025275)).cljs$core$IFn$_invoke$arity$1(p1__10224_SHARP_).call(null, (new cljs.core.Keyword(null, "state", "state", 1123661827)).cljs$core$IFn$_invoke$arity$1(p1__10224_SHARP_)));
+    }, rowers__$1));
+    return cljs.core.concat.call(null, updated, cljs.core.take.call(null, canvas_experiments.ce5.no_of_rowers - cljs.core.count.call(null, updated), cljs.core.repeatedly.call(null, function() {
+      return canvas_experiments.ce5.new_rower.call(null, w, h);
+    })));
+  }, function(ctx, rowers__$1) {
+    var seq__10229 = cljs.core.seq.call(null, rowers__$1);
+    var chunk__10230 = null;
+    var count__10231 = 0;
+    var i__10232 = 0;
     while (true) {
-      if (i__6343 < count__6342) {
-        var fragment = cljs.core._nth.call(null, chunk__6341, i__6343);
-        monet.canvas.begin_path.call(null, ctx);
-        cljs.core.apply.call(null, monet.canvas.move_to, ctx, cljs.core.first.call(null, fragment));
-        cljs.core.apply.call(null, monet.canvas.line_to, ctx, cljs.core.nth.call(null, fragment, 1));
-        cljs.core.apply.call(null, monet.canvas.line_to, ctx, cljs.core.nth.call(null, fragment, 2));
-        cljs.core.apply.call(null, monet.canvas.line_to, ctx, cljs.core.nth.call(null, fragment, 3));
-        monet.canvas.close_path.call(null, ctx);
-        monet.canvas.fill.call(null, ctx);
-        var G__6344 = seq__6340;
-        var G__6345 = chunk__6341;
-        var G__6346 = count__6342;
-        var G__6347 = i__6343 + 1;
-        seq__6340 = G__6344;
-        chunk__6341 = G__6345;
-        count__6342 = G__6346;
-        i__6343 = G__6347;
+      if (i__10232 < count__10231) {
+        var rower = cljs.core._nth.call(null, chunk__10230, i__10232);
+        (new cljs.core.Keyword(null, "draw", "draw", 1016996022)).cljs$core$IFn$_invoke$arity$1(rower).call(null, ctx, (new cljs.core.Keyword(null, "state", "state", 1123661827)).cljs$core$IFn$_invoke$arity$1(rower));
+        var G__10233 = seq__10229;
+        var G__10234 = chunk__10230;
+        var G__10235 = count__10231;
+        var G__10236 = i__10232 + 1;
+        seq__10229 = G__10233;
+        chunk__10230 = G__10234;
+        count__10231 = G__10235;
+        i__10232 = G__10236;
         continue;
       } else {
-        var temp__4092__auto__ = cljs.core.seq.call(null, seq__6340);
+        var temp__4092__auto__ = cljs.core.seq.call(null, seq__10229);
         if (temp__4092__auto__) {
-          var seq__6340__$1 = temp__4092__auto__;
-          if (cljs.core.chunked_seq_QMARK_.call(null, seq__6340__$1)) {
-            var c__4191__auto__ = cljs.core.chunk_first.call(null, seq__6340__$1);
-            var G__6348 = cljs.core.chunk_rest.call(null, seq__6340__$1);
-            var G__6349 = c__4191__auto__;
-            var G__6350 = cljs.core.count.call(null, c__4191__auto__);
-            var G__6351 = 0;
-            seq__6340 = G__6348;
-            chunk__6341 = G__6349;
-            count__6342 = G__6350;
-            i__6343 = G__6351;
+          var seq__10229__$1 = temp__4092__auto__;
+          if (cljs.core.chunked_seq_QMARK_.call(null, seq__10229__$1)) {
+            var c__4191__auto__ = cljs.core.chunk_first.call(null, seq__10229__$1);
+            var G__10237 = cljs.core.chunk_rest.call(null, seq__10229__$1);
+            var G__10238 = c__4191__auto__;
+            var G__10239 = cljs.core.count.call(null, c__4191__auto__);
+            var G__10240 = 0;
+            seq__10229 = G__10237;
+            chunk__10230 = G__10238;
+            count__10231 = G__10239;
+            i__10232 = G__10240;
             continue;
           } else {
-            var fragment = cljs.core.first.call(null, seq__6340__$1);
-            monet.canvas.begin_path.call(null, ctx);
-            cljs.core.apply.call(null, monet.canvas.move_to, ctx, cljs.core.first.call(null, fragment));
-            cljs.core.apply.call(null, monet.canvas.line_to, ctx, cljs.core.nth.call(null, fragment, 1));
-            cljs.core.apply.call(null, monet.canvas.line_to, ctx, cljs.core.nth.call(null, fragment, 2));
-            cljs.core.apply.call(null, monet.canvas.line_to, ctx, cljs.core.nth.call(null, fragment, 3));
-            monet.canvas.close_path.call(null, ctx);
-            monet.canvas.fill.call(null, ctx);
-            var G__6352 = cljs.core.next.call(null, seq__6340__$1);
-            var G__6353 = null;
-            var G__6354 = 0;
-            var G__6355 = 0;
-            seq__6340 = G__6352;
-            chunk__6341 = G__6353;
-            count__6342 = G__6354;
-            i__6343 = G__6355;
+            var rower = cljs.core.first.call(null, seq__10229__$1);
+            (new cljs.core.Keyword(null, "draw", "draw", 1016996022)).cljs$core$IFn$_invoke$arity$1(rower).call(null, ctx, (new cljs.core.Keyword(null, "state", "state", 1123661827)).cljs$core$IFn$_invoke$arity$1(rower));
+            var G__10241 = cljs.core.next.call(null, seq__10229__$1);
+            var G__10242 = null;
+            var G__10243 = 0;
+            var G__10244 = 0;
+            seq__10229 = G__10241;
+            chunk__10230 = G__10242;
+            count__10231 = G__10243;
+            i__10232 = G__10244;
             continue;
           }
         } else {
@@ -25104,56 +25368,388 @@ canvas_experiments.template.entities = function entities(w, h) {
       }
       break;
     }
-  })], null);
+  });
 };
-canvas_experiments.template.show = function show(mcanvas, w, h) {
-  var seq__6362 = cljs.core.seq.call(null, canvas_experiments.template.entities.call(null, w, h));
-  var chunk__6363 = null;
-  var count__6364 = 0;
-  var i__6365 = 0;
+canvas_experiments.ce5.entities = function entities(w, h) {
+  return new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "rowers", "rowers", 4383784126), canvas_experiments.ce5.rowers.call(null, w, h)], null);
+};
+canvas_experiments.ce5.show = function show(mcanvas, w, h) {
+  var seq__10251 = cljs.core.seq.call(null, canvas_experiments.ce5.entities.call(null, w, h));
+  var chunk__10252 = null;
+  var count__10253 = 0;
+  var i__10254 = 0;
   while (true) {
-    if (i__6365 < count__6364) {
-      var vec__6366 = cljs.core._nth.call(null, chunk__6363, i__6365);
-      var kw = cljs.core.nth.call(null, vec__6366, 0, null);
-      var e = cljs.core.nth.call(null, vec__6366, 1, null);
+    if (i__10254 < count__10253) {
+      var vec__10255 = cljs.core._nth.call(null, chunk__10252, i__10254);
+      var kw = cljs.core.nth.call(null, vec__10255, 0, null);
+      var e = cljs.core.nth.call(null, vec__10255, 1, null);
       monet.canvas.add_entity.call(null, mcanvas, kw, e);
-      var G__6368 = seq__6362;
-      var G__6369 = chunk__6363;
-      var G__6370 = count__6364;
-      var G__6371 = i__6365 + 1;
-      seq__6362 = G__6368;
-      chunk__6363 = G__6369;
-      count__6364 = G__6370;
-      i__6365 = G__6371;
+      var G__10257 = seq__10251;
+      var G__10258 = chunk__10252;
+      var G__10259 = count__10253;
+      var G__10260 = i__10254 + 1;
+      seq__10251 = G__10257;
+      chunk__10252 = G__10258;
+      count__10253 = G__10259;
+      i__10254 = G__10260;
       continue;
     } else {
-      var temp__4092__auto__ = cljs.core.seq.call(null, seq__6362);
+      var temp__4092__auto__ = cljs.core.seq.call(null, seq__10251);
       if (temp__4092__auto__) {
-        var seq__6362__$1 = temp__4092__auto__;
-        if (cljs.core.chunked_seq_QMARK_.call(null, seq__6362__$1)) {
-          var c__4191__auto__ = cljs.core.chunk_first.call(null, seq__6362__$1);
-          var G__6372 = cljs.core.chunk_rest.call(null, seq__6362__$1);
-          var G__6373 = c__4191__auto__;
-          var G__6374 = cljs.core.count.call(null, c__4191__auto__);
-          var G__6375 = 0;
-          seq__6362 = G__6372;
-          chunk__6363 = G__6373;
-          count__6364 = G__6374;
-          i__6365 = G__6375;
+        var seq__10251__$1 = temp__4092__auto__;
+        if (cljs.core.chunked_seq_QMARK_.call(null, seq__10251__$1)) {
+          var c__4191__auto__ = cljs.core.chunk_first.call(null, seq__10251__$1);
+          var G__10261 = cljs.core.chunk_rest.call(null, seq__10251__$1);
+          var G__10262 = c__4191__auto__;
+          var G__10263 = cljs.core.count.call(null, c__4191__auto__);
+          var G__10264 = 0;
+          seq__10251 = G__10261;
+          chunk__10252 = G__10262;
+          count__10253 = G__10263;
+          i__10254 = G__10264;
           continue;
         } else {
-          var vec__6367 = cljs.core.first.call(null, seq__6362__$1);
-          var kw = cljs.core.nth.call(null, vec__6367, 0, null);
-          var e = cljs.core.nth.call(null, vec__6367, 1, null);
+          var vec__10256 = cljs.core.first.call(null, seq__10251__$1);
+          var kw = cljs.core.nth.call(null, vec__10256, 0, null);
+          var e = cljs.core.nth.call(null, vec__10256, 1, null);
           monet.canvas.add_entity.call(null, mcanvas, kw, e);
-          var G__6376 = cljs.core.next.call(null, seq__6362__$1);
-          var G__6377 = null;
-          var G__6378 = 0;
-          var G__6379 = 0;
-          seq__6362 = G__6376;
-          chunk__6363 = G__6377;
-          count__6364 = G__6378;
-          i__6365 = G__6379;
+          var G__10265 = cljs.core.next.call(null, seq__10251__$1);
+          var G__10266 = null;
+          var G__10267 = 0;
+          var G__10268 = 0;
+          seq__10251 = G__10265;
+          chunk__10252 = G__10266;
+          count__10253 = G__10267;
+          i__10254 = G__10268;
+          continue;
+        }
+      } else {
+        return null;
+      }
+    }
+    break;
+  }
+};
+goog.provide("canvas_experiments.template");
+goog.require("cljs.core");
+goog.require("canvas_experiments.utils");
+goog.require("canvas_experiments.utils");
+goog.require("monet.canvas");
+goog.require("monet.canvas");
+canvas_experiments.template.body_style = "#cfc";
+canvas_experiments.template.body_length = 120;
+canvas_experiments.template.body_width = 20;
+canvas_experiments.template.row_style = "#eef";
+canvas_experiments.template.row_length = 10;
+canvas_experiments.template.rows_per_side = 16;
+canvas_experiments.template.row_separation = canvas_experiments.template.body_length / canvas_experiments.template.rows_per_side;
+canvas_experiments.template.draw_rower_body = function draw_rower_body(ctx, pos, dir) {
+  monet.canvas.begin_path.call(null, monet.canvas.stroke_cap.call(null, monet.canvas.stroke_width.call(null, monet.canvas.stroke_style.call(null, ctx, canvas_experiments.template.body_style), canvas_experiments.template.body_width), "round"));
+  cljs.core.apply.call(null, monet.canvas.move_to, ctx, pos);
+  cljs.core.apply.call(null, monet.canvas.line_to, ctx, cljs.core.map.call(null, cljs.core._PLUS_, pos, cljs.core.map.call(null, function(p1__5842_SHARP_) {
+    return canvas_experiments.template.body_length * p1__5842_SHARP_;
+  }, dir)));
+  monet.canvas.close_path.call(null, ctx);
+  return monet.canvas.stroke.call(null, ctx);
+};
+canvas_experiments.template.draw_rows = function draw_rows(ctx, pos, theta, offset_angle) {
+  var dir = canvas_experiments.utils.polar_to_cart.call(null, theta, 1);
+  monet.canvas.stroke_width.call(null, monet.canvas.stroke_style.call(null, ctx, canvas_experiments.template.row_style), 1);
+  var seq__5859 = cljs.core.seq.call(null, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "right", "right", 1122416014), new cljs.core.Keyword(null, "left", "left", 1017222009)], null));
+  var chunk__5860 = null;
+  var count__5861 = 0;
+  var i__5862 = 0;
+  while (true) {
+    if (i__5862 < count__5861) {
+      var side = cljs.core._nth.call(null, chunk__5860, i__5862);
+      var perpendicular_5873 = function() {
+        var G__5863 = side;
+        if (cljs.core._EQ_.call(null, new cljs.core.Keyword(null, "left", "left", 1017222009), G__5863)) {
+          return cljs.core._PLUS_;
+        } else {
+          if (cljs.core._EQ_.call(null, new cljs.core.Keyword(null, "right", "right", 1122416014), G__5863)) {
+            return cljs.core._;
+          } else {
+            if (new cljs.core.Keyword(null, "else", "else", 1017020587)) {
+              throw new Error([cljs.core.str("No matching clause: "), cljs.core.str(side)].join(""));
+            } else {
+              return null;
+            }
+          }
+        }
+      }().call(null, Math.PI / 2);
+      var origin_5874 = cljs.core.map.call(null, cljs.core._PLUS_, pos, cljs.core.map.call(null, function(seq__5859, chunk__5860, count__5861, i__5862, perpendicular_5873, side) {
+        return function(p1__5843_SHARP_) {
+          return p1__5843_SHARP_ * (canvas_experiments.template.body_width / 2);
+        };
+      }(seq__5859, chunk__5860, count__5861, i__5862, perpendicular_5873, side), canvas_experiments.utils.polar_to_cart.call(null, theta + perpendicular_5873, 1)));
+      var seq__5864_5875 = cljs.core.seq.call(null, cljs.core.range.call(null, canvas_experiments.template.rows_per_side));
+      var chunk__5865_5876 = null;
+      var count__5866_5877 = 0;
+      var i__5867_5878 = 0;
+      while (true) {
+        if (i__5867_5878 < count__5866_5877) {
+          var row_index_5879 = cljs.core._nth.call(null, chunk__5865_5876, i__5867_5878);
+          var line_start_5880 = cljs.core.map.call(null, cljs.core._PLUS_, origin_5874, cljs.core.map.call(null, function(seq__5864_5875, chunk__5865_5876, count__5866_5877, i__5867_5878, seq__5859, chunk__5860, count__5861, i__5862, row_index_5879, perpendicular_5873, origin_5874, side) {
+            return function(p1__5844_SHARP_) {
+              return p1__5844_SHARP_ * (row_index_5879 * canvas_experiments.template.row_separation);
+            };
+          }(seq__5864_5875, chunk__5865_5876, count__5866_5877, i__5867_5878, seq__5859, chunk__5860, count__5861, i__5862, row_index_5879, perpendicular_5873, origin_5874, side), dir));
+          monet.canvas.begin_path.call(null, ctx);
+          cljs.core.apply.call(null, monet.canvas.move_to, ctx, line_start_5880);
+          cljs.core.apply.call(null, monet.canvas.line_to, ctx, cljs.core.map.call(null, cljs.core._PLUS_, line_start_5880, canvas_experiments.utils.polar_to_cart.call(null, perpendicular_5873 + offset_angle, canvas_experiments.template.row_length)));
+          monet.canvas.close_path.call(null, ctx);
+          monet.canvas.stroke.call(null, ctx);
+          var G__5881 = seq__5864_5875;
+          var G__5882 = chunk__5865_5876;
+          var G__5883 = count__5866_5877;
+          var G__5884 = i__5867_5878 + 1;
+          seq__5864_5875 = G__5881;
+          chunk__5865_5876 = G__5882;
+          count__5866_5877 = G__5883;
+          i__5867_5878 = G__5884;
+          continue;
+        } else {
+          var temp__4092__auto___5885 = cljs.core.seq.call(null, seq__5864_5875);
+          if (temp__4092__auto___5885) {
+            var seq__5864_5886__$1 = temp__4092__auto___5885;
+            if (cljs.core.chunked_seq_QMARK_.call(null, seq__5864_5886__$1)) {
+              var c__4191__auto___5887 = cljs.core.chunk_first.call(null, seq__5864_5886__$1);
+              var G__5888 = cljs.core.chunk_rest.call(null, seq__5864_5886__$1);
+              var G__5889 = c__4191__auto___5887;
+              var G__5890 = cljs.core.count.call(null, c__4191__auto___5887);
+              var G__5891 = 0;
+              seq__5864_5875 = G__5888;
+              chunk__5865_5876 = G__5889;
+              count__5866_5877 = G__5890;
+              i__5867_5878 = G__5891;
+              continue;
+            } else {
+              var row_index_5892 = cljs.core.first.call(null, seq__5864_5886__$1);
+              var line_start_5893 = cljs.core.map.call(null, cljs.core._PLUS_, origin_5874, cljs.core.map.call(null, function(seq__5864_5875, chunk__5865_5876, count__5866_5877, i__5867_5878, seq__5859, chunk__5860, count__5861, i__5862, row_index_5892, seq__5864_5886__$1, temp__4092__auto___5885, perpendicular_5873, origin_5874, side) {
+                return function(p1__5844_SHARP_) {
+                  return p1__5844_SHARP_ * (row_index_5892 * canvas_experiments.template.row_separation);
+                };
+              }(seq__5864_5875, chunk__5865_5876, count__5866_5877, i__5867_5878, seq__5859, chunk__5860, count__5861, i__5862, row_index_5892, seq__5864_5886__$1, temp__4092__auto___5885, perpendicular_5873, origin_5874, side), dir));
+              monet.canvas.begin_path.call(null, ctx);
+              cljs.core.apply.call(null, monet.canvas.move_to, ctx, line_start_5893);
+              cljs.core.apply.call(null, monet.canvas.line_to, ctx, cljs.core.map.call(null, cljs.core._PLUS_, line_start_5893, canvas_experiments.utils.polar_to_cart.call(null, perpendicular_5873 + offset_angle, canvas_experiments.template.row_length)));
+              monet.canvas.close_path.call(null, ctx);
+              monet.canvas.stroke.call(null, ctx);
+              var G__5894 = cljs.core.next.call(null, seq__5864_5886__$1);
+              var G__5895 = null;
+              var G__5896 = 0;
+              var G__5897 = 0;
+              seq__5864_5875 = G__5894;
+              chunk__5865_5876 = G__5895;
+              count__5866_5877 = G__5896;
+              i__5867_5878 = G__5897;
+              continue;
+            }
+          } else {
+          }
+        }
+        break;
+      }
+      var G__5898 = seq__5859;
+      var G__5899 = chunk__5860;
+      var G__5900 = count__5861;
+      var G__5901 = i__5862 + 1;
+      seq__5859 = G__5898;
+      chunk__5860 = G__5899;
+      count__5861 = G__5900;
+      i__5862 = G__5901;
+      continue;
+    } else {
+      var temp__4092__auto__ = cljs.core.seq.call(null, seq__5859);
+      if (temp__4092__auto__) {
+        var seq__5859__$1 = temp__4092__auto__;
+        if (cljs.core.chunked_seq_QMARK_.call(null, seq__5859__$1)) {
+          var c__4191__auto__ = cljs.core.chunk_first.call(null, seq__5859__$1);
+          var G__5902 = cljs.core.chunk_rest.call(null, seq__5859__$1);
+          var G__5903 = c__4191__auto__;
+          var G__5904 = cljs.core.count.call(null, c__4191__auto__);
+          var G__5905 = 0;
+          seq__5859 = G__5902;
+          chunk__5860 = G__5903;
+          count__5861 = G__5904;
+          i__5862 = G__5905;
+          continue;
+        } else {
+          var side = cljs.core.first.call(null, seq__5859__$1);
+          var perpendicular_5906 = function() {
+            var G__5868 = side;
+            if (cljs.core._EQ_.call(null, new cljs.core.Keyword(null, "left", "left", 1017222009), G__5868)) {
+              return cljs.core._PLUS_;
+            } else {
+              if (cljs.core._EQ_.call(null, new cljs.core.Keyword(null, "right", "right", 1122416014), G__5868)) {
+                return cljs.core._;
+              } else {
+                if (new cljs.core.Keyword(null, "else", "else", 1017020587)) {
+                  throw new Error([cljs.core.str("No matching clause: "), cljs.core.str(side)].join(""));
+                } else {
+                  return null;
+                }
+              }
+            }
+          }().call(null, Math.PI / 2);
+          var origin_5907 = cljs.core.map.call(null, cljs.core._PLUS_, pos, cljs.core.map.call(null, function(seq__5859, chunk__5860, count__5861, i__5862, perpendicular_5906, side, seq__5859__$1, temp__4092__auto__) {
+            return function(p1__5843_SHARP_) {
+              return p1__5843_SHARP_ * (canvas_experiments.template.body_width / 2);
+            };
+          }(seq__5859, chunk__5860, count__5861, i__5862, perpendicular_5906, side, seq__5859__$1, temp__4092__auto__), canvas_experiments.utils.polar_to_cart.call(null, theta + perpendicular_5906, 1)));
+          var seq__5869_5908 = cljs.core.seq.call(null, cljs.core.range.call(null, canvas_experiments.template.rows_per_side));
+          var chunk__5870_5909 = null;
+          var count__5871_5910 = 0;
+          var i__5872_5911 = 0;
+          while (true) {
+            if (i__5872_5911 < count__5871_5910) {
+              var row_index_5912 = cljs.core._nth.call(null, chunk__5870_5909, i__5872_5911);
+              var line_start_5913 = cljs.core.map.call(null, cljs.core._PLUS_, origin_5907, cljs.core.map.call(null, function(seq__5869_5908, chunk__5870_5909, count__5871_5910, i__5872_5911, seq__5859, chunk__5860, count__5861, i__5862, row_index_5912, perpendicular_5906, origin_5907, side, seq__5859__$1, temp__4092__auto__) {
+                return function(p1__5844_SHARP_) {
+                  return p1__5844_SHARP_ * (row_index_5912 * canvas_experiments.template.row_separation);
+                };
+              }(seq__5869_5908, chunk__5870_5909, count__5871_5910, i__5872_5911, seq__5859, chunk__5860, count__5861, i__5862, row_index_5912, perpendicular_5906, origin_5907, side, seq__5859__$1, temp__4092__auto__), dir));
+              monet.canvas.begin_path.call(null, ctx);
+              cljs.core.apply.call(null, monet.canvas.move_to, ctx, line_start_5913);
+              cljs.core.apply.call(null, monet.canvas.line_to, ctx, cljs.core.map.call(null, cljs.core._PLUS_, line_start_5913, canvas_experiments.utils.polar_to_cart.call(null, perpendicular_5906 + offset_angle, canvas_experiments.template.row_length)));
+              monet.canvas.close_path.call(null, ctx);
+              monet.canvas.stroke.call(null, ctx);
+              var G__5914 = seq__5869_5908;
+              var G__5915 = chunk__5870_5909;
+              var G__5916 = count__5871_5910;
+              var G__5917 = i__5872_5911 + 1;
+              seq__5869_5908 = G__5914;
+              chunk__5870_5909 = G__5915;
+              count__5871_5910 = G__5916;
+              i__5872_5911 = G__5917;
+              continue;
+            } else {
+              var temp__4092__auto___5918__$1 = cljs.core.seq.call(null, seq__5869_5908);
+              if (temp__4092__auto___5918__$1) {
+                var seq__5869_5919__$1 = temp__4092__auto___5918__$1;
+                if (cljs.core.chunked_seq_QMARK_.call(null, seq__5869_5919__$1)) {
+                  var c__4191__auto___5920 = cljs.core.chunk_first.call(null, seq__5869_5919__$1);
+                  var G__5921 = cljs.core.chunk_rest.call(null, seq__5869_5919__$1);
+                  var G__5922 = c__4191__auto___5920;
+                  var G__5923 = cljs.core.count.call(null, c__4191__auto___5920);
+                  var G__5924 = 0;
+                  seq__5869_5908 = G__5921;
+                  chunk__5870_5909 = G__5922;
+                  count__5871_5910 = G__5923;
+                  i__5872_5911 = G__5924;
+                  continue;
+                } else {
+                  var row_index_5925 = cljs.core.first.call(null, seq__5869_5919__$1);
+                  var line_start_5926 = cljs.core.map.call(null, cljs.core._PLUS_, origin_5907, cljs.core.map.call(null, function(seq__5869_5908, chunk__5870_5909, count__5871_5910, i__5872_5911, seq__5859, chunk__5860, count__5861, i__5862, row_index_5925, seq__5869_5919__$1, temp__4092__auto___5918__$1, perpendicular_5906, origin_5907, side, seq__5859__$1, temp__4092__auto__) {
+                    return function(p1__5844_SHARP_) {
+                      return p1__5844_SHARP_ * (row_index_5925 * canvas_experiments.template.row_separation);
+                    };
+                  }(seq__5869_5908, chunk__5870_5909, count__5871_5910, i__5872_5911, seq__5859, chunk__5860, count__5861, i__5862, row_index_5925, seq__5869_5919__$1, temp__4092__auto___5918__$1, perpendicular_5906, origin_5907, side, seq__5859__$1, temp__4092__auto__), dir));
+                  monet.canvas.begin_path.call(null, ctx);
+                  cljs.core.apply.call(null, monet.canvas.move_to, ctx, line_start_5926);
+                  cljs.core.apply.call(null, monet.canvas.line_to, ctx, cljs.core.map.call(null, cljs.core._PLUS_, line_start_5926, canvas_experiments.utils.polar_to_cart.call(null, perpendicular_5906 + offset_angle, canvas_experiments.template.row_length)));
+                  monet.canvas.close_path.call(null, ctx);
+                  monet.canvas.stroke.call(null, ctx);
+                  var G__5927 = cljs.core.next.call(null, seq__5869_5919__$1);
+                  var G__5928 = null;
+                  var G__5929 = 0;
+                  var G__5930 = 0;
+                  seq__5869_5908 = G__5927;
+                  chunk__5870_5909 = G__5928;
+                  count__5871_5910 = G__5929;
+                  i__5872_5911 = G__5930;
+                  continue;
+                }
+              } else {
+              }
+            }
+            break;
+          }
+          var G__5931 = cljs.core.next.call(null, seq__5859__$1);
+          var G__5932 = null;
+          var G__5933 = 0;
+          var G__5934 = 0;
+          seq__5859 = G__5931;
+          chunk__5860 = G__5932;
+          count__5861 = G__5933;
+          i__5862 = G__5934;
+          continue;
+        }
+      } else {
+        return null;
+      }
+    }
+    break;
+  }
+};
+canvas_experiments.template.rower = function rower(pos, theta) {
+  var dir = canvas_experiments.utils.polar_to_cart.call(null, theta, 1);
+  return monet.canvas.entity.call(null, new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "ticks", "ticks", 1124259304), 0, new cljs.core.Keyword(null, "pos", "pos", 1014015430), pos], null), function(p__5939) {
+    var map__5940 = p__5939;
+    var map__5940__$1 = cljs.core.seq_QMARK_.call(null, map__5940) ? cljs.core.apply.call(null, cljs.core.hash_map, map__5940) : map__5940;
+    var pos__$1 = cljs.core.get.call(null, map__5940__$1, new cljs.core.Keyword(null, "pos", "pos", 1014015430));
+    var ticks = cljs.core.get.call(null, map__5940__$1, new cljs.core.Keyword(null, "ticks", "ticks", 1124259304));
+    return new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "ticks", "ticks", 1124259304), ticks + 1, new cljs.core.Keyword(null, "pos", "pos", 1014015430), cljs.core.map.call(null, cljs.core._PLUS_, pos__$1, dir)], null);
+  }, function(ctx, p__5941) {
+    var map__5942 = p__5941;
+    var map__5942__$1 = cljs.core.seq_QMARK_.call(null, map__5942) ? cljs.core.apply.call(null, cljs.core.hash_map, map__5942) : map__5942;
+    var pos__$1 = cljs.core.get.call(null, map__5942__$1, new cljs.core.Keyword(null, "pos", "pos", 1014015430));
+    canvas_experiments.template.draw_rower_body.call(null, ctx, pos__$1, dir);
+    return canvas_experiments.template.draw_rows.call(null, ctx, pos__$1, theta, 0);
+  });
+};
+canvas_experiments.template.entities = function entities(w, h) {
+  return new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null, "test-rower", "test-rower", 1651822206), canvas_experiments.template.rower.call(null, new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [0, h / 2], null), 0)], null);
+};
+canvas_experiments.template.show = function show(mcanvas, w, h) {
+  var seq__5949 = cljs.core.seq.call(null, canvas_experiments.template.entities.call(null, w, h));
+  var chunk__5950 = null;
+  var count__5951 = 0;
+  var i__5952 = 0;
+  while (true) {
+    if (i__5952 < count__5951) {
+      var vec__5953 = cljs.core._nth.call(null, chunk__5950, i__5952);
+      var kw = cljs.core.nth.call(null, vec__5953, 0, null);
+      var e = cljs.core.nth.call(null, vec__5953, 1, null);
+      monet.canvas.add_entity.call(null, mcanvas, kw, e);
+      var G__5955 = seq__5949;
+      var G__5956 = chunk__5950;
+      var G__5957 = count__5951;
+      var G__5958 = i__5952 + 1;
+      seq__5949 = G__5955;
+      chunk__5950 = G__5956;
+      count__5951 = G__5957;
+      i__5952 = G__5958;
+      continue;
+    } else {
+      var temp__4092__auto__ = cljs.core.seq.call(null, seq__5949);
+      if (temp__4092__auto__) {
+        var seq__5949__$1 = temp__4092__auto__;
+        if (cljs.core.chunked_seq_QMARK_.call(null, seq__5949__$1)) {
+          var c__4191__auto__ = cljs.core.chunk_first.call(null, seq__5949__$1);
+          var G__5959 = cljs.core.chunk_rest.call(null, seq__5949__$1);
+          var G__5960 = c__4191__auto__;
+          var G__5961 = cljs.core.count.call(null, c__4191__auto__);
+          var G__5962 = 0;
+          seq__5949 = G__5959;
+          chunk__5950 = G__5960;
+          count__5951 = G__5961;
+          i__5952 = G__5962;
+          continue;
+        } else {
+          var vec__5954 = cljs.core.first.call(null, seq__5949__$1);
+          var kw = cljs.core.nth.call(null, vec__5954, 0, null);
+          var e = cljs.core.nth.call(null, vec__5954, 1, null);
+          monet.canvas.add_entity.call(null, mcanvas, kw, e);
+          var G__5963 = cljs.core.next.call(null, seq__5949__$1);
+          var G__5964 = null;
+          var G__5965 = 0;
+          var G__5966 = 0;
+          seq__5949 = G__5963;
+          chunk__5950 = G__5964;
+          count__5951 = G__5965;
+          i__5952 = G__5966;
           continue;
         }
       } else {
@@ -25165,11 +25761,12 @@ canvas_experiments.template.show = function show(mcanvas, w, h) {
 };
 goog.provide("canvas_experiments.experiments");
 goog.require("cljs.core");
+goog.require("canvas_experiments.ce5");
 goog.require("canvas_experiments.ce4");
 goog.require("canvas_experiments.ce3");
 goog.require("canvas_experiments.ce2");
 goog.require("canvas_experiments.ce1");
-canvas_experiments.experiments.experiments = new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [canvas_experiments.ce4.show, canvas_experiments.ce3.show, canvas_experiments.ce2.show, canvas_experiments.ce1.show], null);
+canvas_experiments.experiments.experiments = new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, [canvas_experiments.ce5.show, canvas_experiments.ce4.show, canvas_experiments.ce3.show, canvas_experiments.ce2.show, canvas_experiments.ce1.show], null);
 goog.provide("canvas_experiments.core");
 goog.require("cljs.core");
 goog.require("canvas_experiments.experiments");
