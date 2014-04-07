@@ -4,7 +4,7 @@
 
 (def body-length 120)
 (def body-width 20)
-(def row-length 50)
+(def row-length 20)
 (def rows-per-side 16)
 (def row-separation (/ body-length rows-per-side))
 
@@ -26,10 +26,10 @@
           (monet/stroke-style style)
           (monet/stroke-width 1))
       (doseq [side [:right :left]]
-        (let [perpendicular ((case side :right - :left +)
-                             (/ (.-PI js/Math) 2))
+        (let [perpendicular (+ theta ((case side :right - :left +)
+                                      (/ (.-PI js/Math) 2)))
               origin (map + pos (map #(* % (/ body-width 2))
-                                     (utils/polar-to-cart (+ theta perpendicular) 1)))]
+                                     (utils/polar-to-cart perpendicular 1)))]
           (doseq [row-index (range (inc rows-per-side))]
             (let [line-start (map + origin
                                   (map #(* % (* row-index row-separation))
@@ -79,7 +79,7 @@
       3 [(* (rand w)) h])))
 
 (def no-of-rowers 5)
-(def rower-colour {:s 0.5 :l 0.7})
+(def rower-colour {:s 0.5 :l 1})
 
 (defn new-rower [w h]
   (rower (rand-side-point w h)
@@ -100,8 +100,21 @@
                   (doseq [rower rowers]
                     ((:draw rower) ctx (:state rower))))))
 
+(def bg-osc-period 200)
+(def bg-osc (utils/osc 0 bg-osc-period))
+(def bg-colour {:s 0.5 :l 0.5})
+
+(defn bg [w h]
+  (monet/entity 0
+                inc
+                (fn [ctx ticks]
+                  (monet/fill-style ctx (utils/to-colour (assoc bg-colour :h (+ 150
+                                                                                (* 100 (bg-osc ticks))))))
+                  (monet/draw-rect ctx 0 0 w h))))
+
 (defn entities [w h]
-  {:rowers (rowers w h)})
+  {:bg (bg w h)
+   :rowers (rowers w h)})
 
 (defn show [mcanvas w h]
   (doseq [[kw e] (entities w h)]
