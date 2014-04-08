@@ -43,13 +43,16 @@
               (monet/close-path ctx)
               (monet/stroke ctx))))))))
 
-(def max-speed 4)
+(def min-speed 2)
+(def max-speed 8)
+(def speed-diff (- max-speed min-speed))
 (def max-row-angle (/ (.-PI js/Math) 4))
 (def osc-divisor 20)
 
 (defn speed-osc [ticks]
-  (* max-speed
-     (max 0 (.sin js/Math (/ ticks osc-divisor)))))
+  (+ min-speed
+     (* speed-diff
+        (max 0 (.sin js/Math (/ ticks osc-divisor))))))
 
 (defn row-osc [ticks]
   (* max-row-angle
@@ -63,28 +66,32 @@
                (let [next-pos (map + pos
                                    (map #(* % (speed-osc ticks))
                                         dir))]
-                 (when (utils/point-in next-pos [0 0] [w h])
+                 (when (utils/point-in next-pos (repeat 2 (- body-length))
+                                       [(+ body-length w) (+ body-length h)])
                    {:ticks (inc ticks)
                     :pos next-pos})))
      :draw (fn [ctx {:keys [pos ticks]}]
              (draw-rower-body ctx pos dir style)
              (draw-rows ctx pos theta (row-osc ticks) style))}))
 
-(defn rand-side-point [w h]
+(defn rand-side-point [x y w h]
   (let [side (rand-int 3)]
     (case side
-      0 [0 (* (rand h))]
-      1 [(* (rand w)) 0]
+      0 [x (* (rand h))]
+      1 [(* (rand w)) y]
       2 [w (* (rand h))]
       3 [(* (rand w)) h])))
 
-(def no-of-rowers 5)
-(def rower-colour {:s 0.5 :l 1})
+(def no-of-rowers 10)
+(def rower-colour {:h 0 :s 0 :l 1 :a 0.8})
 
 (defn new-rower [w h]
-  (rower (rand-side-point w h)
+  (rower (rand-side-point (- body-length)
+                          (- body-length)
+                          (+ body-length w)
+                          (+ body-length h))
          (* (rand) 2 (.-PI js/Math))
-         (utils/rand-colour rower-colour)
+         (utils/to-colour rower-colour)
          w h))
 
 (defn rowers [w h]
@@ -100,17 +107,20 @@
                   (doseq [rower rowers]
                     ((:draw rower) ctx (:state rower))))))
 
-(def bg-osc-period 200)
+(def bg-osc-period 1200)
 (def bg-osc (utils/osc 0 bg-osc-period))
-(def bg-colour {:s 0.5 :l 0.5})
+(def bg-colour {:s 0.8 :l 0.2})
+(def bg-min-hue 180)
+(def bg-max-hue 240)
+(def bg-hue-diff (- bg-max-hue bg-min-hue))
 
 (defn bg [w h]
   (monet/entity 0
                 inc
                 (fn [ctx ticks]
-                  (monet/fill-style ctx (utils/to-colour (assoc bg-colour :h (+ 150
-                                                                                (* 100 (bg-osc ticks))))))
-                  (monet/draw-rect ctx 0 0 w h))))
+                  (monet/fill-style ctx (utils/to-colour (assoc bg-colour :h (+ bg-min-hue
+                                                                                (* bg-hue-diff (bg-osc ticks))))))
+                  (monet/fill-rect ctx {:x 0, :y 0, :w w, :h h}))))
 
 (defn entities [w h]
   {:bg (bg w h)
