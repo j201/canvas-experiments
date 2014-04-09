@@ -59,5 +59,4 @@
 
 (defn show [mcanvas w h]
   (doseq [[kw e] (entities w h)]
-    (.log js/console e)
     (monet/add-entity mcanvas kw e)))
