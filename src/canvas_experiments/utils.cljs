@@ -1,4 +1,5 @@
-(ns canvas-experiments.utils)
+(ns canvas-experiments.utils
+  (:require [monet.canvas :as monet]))
 
 ; s and l are in float notation, not percentange
 (defn to-colour [{:keys [h s l a]}]
@@ -23,8 +24,8 @@
   ([colour]
    (to-colour
      (merge {:h (rand-int 360)
-             :s (rand-int 101)
-             :l (rand-int 101)}
+             :s (rand)
+             :l (rand)}
             colour))))
 
 (defn ticks->s [x] (/ x 60))
@@ -97,3 +98,10 @@
             (<= xp x2))
        (and (>= yp y1)
             (<= yp y2))))
+
+(defn background [colour w h]
+  (monet/entity nil
+                identity
+                (fn [ctx]
+                  (monet/fill-style ctx colour)
+                  (monet/fill-rect ctx {:x 0 :y 0 :w w :h h}))))
