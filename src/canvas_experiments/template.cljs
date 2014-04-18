@@ -1,4 +1,4 @@
-(ns canvas-experiments.ce6
+(ns canvas-experiments.template
   (:require [monet.canvas :as monet]
             [canvas-experiments.utils :as utils]))
 

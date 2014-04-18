@@ -41,9 +41,12 @@
                              (* 2 Math/PI
                                 (/ x period)))))))))
 
-(defn log [thing]
-  (.log js/console thing)
-  thing)
+(defn log 
+  ([thing]
+   (.log js/console thing)
+   thing)
+  ([thing pred]
+    (if (pred thing) (log thing) thing)))
 
 (defn line-segment-intersection [[[x1 y1] [x2 y2]] [[x3 y3] [x4 y4]]]
   (let [t (/ (+ (* x4 (- y1 y3))
@@ -105,3 +108,9 @@
                 (fn [ctx]
                   (monet/fill-style ctx colour)
                   (monet/fill-rect ctx {:x 0 :y 0 :w w :h h}))))
+
+(defn all-equal? [sq]
+  (cond
+    (empty? (rest sq)) true
+    (not= (first sq) (second sq)) false
+    :else (recur (rest sq))))

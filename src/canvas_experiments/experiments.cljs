@@ -6,10 +6,12 @@
             canvas-experiments.ce5
             canvas-experiments.ce6
             canvas-experiments.ce7
+            canvas-experiments.ce8
             ))
 
 (def experiments
   [
+   canvas-experiments.ce8/show
    canvas-experiments.ce7/show
    canvas-experiments.ce6/show
    canvas-experiments.ce5/show
