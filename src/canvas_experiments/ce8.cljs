@@ -4,7 +4,6 @@
 
 (def delta (/ (.-PI js/Math) 2))
 (def tick-factor 0.004)
-(def padding 10)
 (def radius 20)
 (def l-param-min 2)
 (def l-param-max 7)
@@ -22,19 +21,19 @@
 
 (defn next-liss-dot [a b A B ticks]
   {:ticks (inc ticks)
-   :pos (liss-pos a b A B ticks)})
+   :pos (map + (repeat radius) (liss-pos a b A B ticks))})
 
 (defn draw-liss-dot [mc ctx {:keys [pos]}]
   (let [colour (get-colour mc)]
     (set! (.-shadowColor ctx) colour)
-    (set! (.-shadowBlur ctx) 20)
+    (set! (.-shadowBlur ctx) 30)
     (monet/fill-style ctx colour)
     (monet/circle ctx {:x (first pos)
                        :y (second pos)
                        :r radius})))
 
 (defn liss-dot [mc a b w h]
-  (let [[A B] (map #(- % (* 2 padding)) [w h])]
+  (let [[A B] (map - [w h] (repeat (* 2 radius)))]
     (monet/entity (next-liss-dot a b A B 0)
                   #(next-liss-dot a b A B (:ticks %))
                   (partial draw-liss-dot mc))))
@@ -49,7 +48,7 @@
                  :ticks-since-changed 0}
                 (fn [state]
                   (let [dots (get-dots mc)]
-                    (if (and (> (:ticks-since-changed state) 10) ; hackish condition, but meh
+                    (if (and (> (:ticks-since-changed state) 100) ; hackish condition, but meh
                              (utils/log (every? #(< % 10)
                                      (map (fn [d1 d2]
                                             (apply max
