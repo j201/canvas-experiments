@@ -1,6 +1,7 @@
 (ns canvas-experiments.core
   (:require [monet.canvas :as monet]
-            [canvas-experiments.experiments :refer [experiments]]))
+            [canvas-experiments.experiments :refer [experiments]]
+            canvas-experiments.music))
 
 (def canvas (.getElementById js/document "canvas"))
 
@@ -52,3 +53,5 @@
 (.addEventListener (.getElementById js/document "right-arrow") "click" next-experiment)
 
 (reset)
+
+(canvas-experiments.music/play-test!)
