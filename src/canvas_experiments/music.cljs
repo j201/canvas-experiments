@@ -52,20 +52,32 @@
     (adsr! (.-gain gain) a d s r start duration)
     gain))
 
+(defn biquad [type' freq q gain]
+  (let [bq (.createBiquadFilter context)]
+    (set! (.-type bq) (str type'))
+    (set! (.-value (.-frequency bq)) freq)
+    (set! (.-value (.-Q bq)) q)
+    (set! (.-value (.-gain bq)) gain)
+    bq))
+
+(defn chain-nodes! [& nodes]
+  (reduce #(do (.connect %1 %2) %2)
+          nodes))
+
+(defn chord-pad-osc [note start duration]
+  (let [osc (.createOscillator context)
+        gain (adsr-gain 0.007 0.1 0.5 0.2 start duration)
+        lpf (biquad "lowpass" 1000 0.7 0)
+        vol (.createGain context)]
+    (set! (.-type osc) "triangle")
+    (set! (.-value (.-gain vol)) 0.1)
+    (chain-nodes! osc gain lpf vol)
+    (.connect vol (.-destination context))
+    (play-note osc (freq note) start (+ duration 0.2))))
+
 (defn play-test! []
-  (let [notes e-dorian-chords
-        gen-note (fn [note start duration]
-                   (let [osc (.createOscillator context)
-                         gain (adsr-gain 0.007 0.1 0.5 0.2 start duration)
-                         vol (.createGain context)]
-                     (set! (.-type osc) "sawtooth")
-                     (set! (.-value (.-gain vol)) 0.1)
-                     (play-note osc (freq note) start (+ duration 0.2))
-                     (.connect osc gain)
-                     (.connect gain vol)
-                     (.connect vol (.-destination context))))]
-    (doseq [n (range (count notes))
-            note (nth notes n)]
-      (gen-note note (+ (* (rand) 0.03)
-                        (* n 0.6))
-                0.5))))
+  (doseq [n (range (count e-dorian-chords))
+          note (nth e-dorian-chords n)]
+    (chord-pad-osc note (+ (* (rand) 0.03)
+                           (* n 1.8))
+                   4)))
